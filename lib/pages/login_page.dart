@@ -69,13 +69,10 @@ class _LoginPageState extends State<LoginPage> {
             const SizedBox(height: 40),
             GestureDetector(
               onTap: () {
-                if (_usernameController.text == "" ||
-                    _passwordController.text == "") {
-                  return;
-                }
-
                 Navigator.pushReplacement(context,
                     MaterialPageRoute(builder: (context) => MainPage()));
+
+                _showSuccessMsg("Login Succes");
               },
               child: Container(
                 width: MediaQuery.of(context).size.width,
@@ -106,11 +103,9 @@ class _LoginPageState extends State<LoginPage> {
         msg: "Login Success",
         toastLength: Toast.LENGTH_SHORT,
         gravity: ToastGravity.CENTER,
-        timeInSecForIosWeb: 1,
-        backgroundColor: Colors.red,
+        timeInSecForIosWeb: 3,
+        backgroundColor: Colors.black,
         textColor: Colors.white,
         fontSize: 16);
   }
-
-  _showErrorMsg() {}
 }

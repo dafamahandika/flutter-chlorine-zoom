@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_1_dafamahandika/pages/main_page.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -9,8 +10,16 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  final TextEditingController _usernamaController = TextEditingController();
+  final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+
+  // FToast fToast;
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   fToast: FToast();
+  //   fToast.init(context);
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -25,32 +34,45 @@ class _LoginPageState extends State<LoginPage> {
         padding: const EdgeInsets.all(24.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.max,
           children: [
-            Text(
-              "Login",
-              style: TextStyle(fontSize: 24),
+            const SizedBox(height: 32),
+            const Center(
+              child: Text(
+                "Login",
+                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                textAlign: TextAlign.center,
+              ),
             ),
             const SizedBox(
               height: 24,
             ),
-            Text("Username", ),
+            const Text(
+              "Username",
+              style: TextStyle(fontSize: 16),
+            ),
             TextFormField(
-              controller: _usernamaController,
+              controller: _usernameController,
               keyboardType: TextInputType.text,
             ),
-            const SizedBox(height: 16),
+            const SizedBox(height: 24),
+            const Text(
+              "Password ",
+              style: TextStyle(fontSize: 16),
+            ),
             TextFormField(
               controller: _passwordController,
               keyboardType: TextInputType.text,
               obscureText: true,
             ),
-            const SizedBox(height: 48),
+            const SizedBox(height: 40),
             GestureDetector(
               onTap: () {
                 Navigator.pushReplacement(context,
                     MaterialPageRoute(builder: (context) => MainPage()));
+
+                _showSuccessMsg("Login Succes");
               },
               child: Container(
                 width: MediaQuery.of(context).size.width,
@@ -74,5 +96,16 @@ class _LoginPageState extends State<LoginPage> {
         ),
       ),
     );
+  }
+
+  _showSuccessMsg(String msg) {
+    Fluttertoast.showToast(
+        msg: "Login Success",
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.CENTER,
+        timeInSecForIosWeb: 3,
+        backgroundColor: Colors.black,
+        textColor: Colors.white,
+        fontSize: 16);
   }
 }

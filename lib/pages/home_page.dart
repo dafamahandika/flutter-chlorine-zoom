@@ -46,21 +46,36 @@ class _HomePageState extends State<HomePage> {
               const SizedBox(
                 height: 16,
               ),
+              Row(
+                children: [
+                  Flexible(
+                    flex: 1,
+                    child: Container(
+                      height: 20,
+                      color: Colors.lightBlue,
+                    ),
+                  ),
+                  Flexible(
+                      child: Container(
+                    height: 20,
+                    color: Colors.lightBlue.shade200,
+                  )),
+                  // Text("Item 3"),
+                ],
+              ),
+              Image.asset("assets/dafa.jgp"),
               const Text(
                 "Artikel",
                 style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
               ),
               ListView(
                 shrinkWrap: true,
-                children: [
-                  _itemArticle(context, "Artikel 1",
-                      "Ini merupakan artikel yang pertama"),
-                  _itemArticle(context, "Artikel 2",
-                      "Ini merupakan artikel yang kedua"),
-                  _itemArticle(context, "Artikel 3",
-                      "Ini merupakan artikel yang ketiga"),
-
-                ],
+                physics: const NeverScrollableScrollPhysics(),
+                children: List.generate(
+                  5,
+                  (index) => _itemArticle(context, "Artikel $index",
+                      "Ini merupakan artikel yang ke $index"),
+                ),
               ),
             ],
           ),
@@ -87,7 +102,7 @@ class _HomePageState extends State<HomePage> {
       width: MediaQuery.of(context).size.width,
       child: Card(
         child: Padding(
-            padding: const EdgeInsets.all(16),
+            padding: const EdgeInsets.all(12),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,

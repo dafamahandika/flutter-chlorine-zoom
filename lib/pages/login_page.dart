@@ -13,14 +13,6 @@ class _LoginPageState extends State<LoginPage> {
   final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
-  // FToast fToast;
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   fToast: FToast();
-  //   fToast.init(context);
-  // }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,78 +21,122 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   _body(BuildContext context) {
-    return SingleChildScrollView(
-      child: Padding(
-        padding: const EdgeInsets.all(24.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisSize: MainAxisSize.max,
-          children: [
-            const SizedBox(height: 32),
-            const Center(
-              child: Text(
-                "Login",
-                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-                textAlign: TextAlign.center,
-              ),
-            ),
-            const SizedBox(
-              height: 24,
-            ),
-            const Text(
-              "Username",
-              style: TextStyle(fontSize: 16),
-            ),
-            TextFormField(
-              controller: _usernameController,
-              keyboardType: TextInputType.text,
-            ),
-            const SizedBox(height: 24),
-            const Text(
-              "Password ",
-              style: TextStyle(fontSize: 16),
-            ),
-            TextFormField(
-              controller: _passwordController,
-              keyboardType: TextInputType.text,
-              obscureText: true,
-            ),
-            const SizedBox(height: 40),
-            GestureDetector(
-              onTap: () {
-                Navigator.pushReplacement(context,
-                    MaterialPageRoute(builder: (context) => MainPage()));
-
-                _showSuccessMsg("Login Succes");
-              },
-              child: Container(
-                width: MediaQuery.of(context).size.width,
-                height: 40,
-                decoration: BoxDecoration(
-                    color: Colors.blue,
-                    borderRadius: BorderRadius.circular(10)),
-                child: const Center(
-                  child: Text(
-                    "Login",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 10,
-                      fontWeight: FontWeight.bold,
+    return Stack(
+      children: [
+        // Image.asset(
+        //   "assets/bg.jpeg",
+        //   width: MediaQuery.of(context).size.width,
+        //   height: MediaQuery.of(context).size.height,
+        // ),
+        SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(24.0),
+            child: Card(
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    const SizedBox(height: 32),
+                    const Center(
+                      child: Text(
+                        "Login",
+                        style: TextStyle(
+                            fontSize: 24, fontWeight: FontWeight.bold),
+                        textAlign: TextAlign.center,
+                      ),
                     ),
-                  ),
+                    const SizedBox(
+                      height: 24,
+                    ),
+                    const Text(
+                      "Username",
+                      style: TextStyle(fontSize: 16),
+                    ),
+                    TextFormField(
+                      controller: _usernameController,
+                      keyboardType: TextInputType.text,
+                    ),
+                    const SizedBox(height: 24),
+                    const Text(
+                      "Password ",
+                      style: TextStyle(fontSize: 16),
+                    ),
+                    TextFormField(
+                      controller: _passwordController,
+                      keyboardType: TextInputType.text,
+                      obscureText: true,
+                    ),
+                    const SizedBox(height: 40),
+                    GestureDetector(
+                      onTap: () {
+                        if (_usernameController.text == "" ||
+                            _passwordController.text == "") {
+                          _showToastMsg("Harus Di Isi !!!");
+
+                          return;
+                        }
+
+                        if (_usernameController.text != "admin" ||
+                            _passwordController.text != "admin123") {
+                          _showToastMsg("Username atau Password Salah !!!");
+
+                          return;
+                        }
+
+                        Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => MainPage()));
+                      },
+                      child: Container(
+                        width: MediaQuery.of(context).size.width,
+                        height: 40,
+                        decoration: BoxDecoration(
+                            color: Colors.blue,
+                            borderRadius: BorderRadius.circular(10)),
+                        child: const Center(
+                          child: Text(
+                            "Login",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 10,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: Center(child: Text("Lupa Password")),
+                    )
+                  ],
                 ),
               ),
             ),
-          ],
+          ),
         ),
-      ),
+        // Positioned(
+        //   bottom: 0,
+        //   child: Card(
+        //     child: Row(
+        //       mainAxisAlignment: MainAxisAlignment.center,
+        //       children: [
+        //         Text("Lupa Password"),
+        //       ],
+        //     ),
+        //   ),
+        // ),
+      ],
     );
   }
 
-  _showSuccessMsg(String msg) {
+  _showToastMsg(String msg) {
     Fluttertoast.showToast(
-        msg: "Login Success",
+        msg: "Harapa Login !!!",
         toastLength: Toast.LENGTH_SHORT,
         gravity: ToastGravity.CENTER,
         timeInSecForIosWeb: 3,

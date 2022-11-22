@@ -60,10 +60,11 @@ class _HomePageState extends State<HomePage> {
                     height: 20,
                     color: Colors.lightBlue.shade200,
                   )),
-                  // Text("Item 3"),
                 ],
               ),
-              Image.asset("assets/dafa.jgp"),
+              // const SizedBox(
+              //   height: 8,
+              // ),
               const Text(
                 "Artikel",
                 style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
@@ -102,22 +103,25 @@ class _HomePageState extends State<HomePage> {
       width: MediaQuery.of(context).size.width,
       child: Card(
         child: Padding(
-            padding: const EdgeInsets.all(12),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  title,
-                  style: const TextStyle(
-                      fontSize: 14, fontWeight: FontWeight.bold),
+          padding: const EdgeInsets.all(12),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                title,
+                style:
+                    const TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+              ),
+              Text(
+                desc,
+                style: const TextStyle(
+                  fontSize: 13,
                 ),
-                Text(desc,
-                    style: const TextStyle(
-                      fontSize: 13,
-                    ))
-              ],
-            )),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }

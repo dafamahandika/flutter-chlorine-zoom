@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_1_dafamahandika/data/constant.dart';
+import 'package:flutter_1_dafamahandika/models/profile.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -8,6 +10,14 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  late Profile profile;
+
+  @override
+  void initState() {
+    profile = Profile.fromJson(jsonProfile);
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,7 +37,7 @@ class _HomePageState extends State<HomePage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.max,
             children: [
-              const Text("Hello Dafa Mahandika"),
+              Text("Hello ${profile.phone}"),
               const SizedBox(
                 height: 16,
               ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_1_dafamahandika/models/auth.dart';
 import 'package:flutter_1_dafamahandika/pages/main_page.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
@@ -29,95 +30,141 @@ class _LoginPageState extends State<LoginPage> {
         //   height: MediaQuery.of(context).size.height,
         // ),
         SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.all(24.0),
-            child: Card(
-              child: Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    const SizedBox(height: 32),
-                    const Center(
-                      child: Text(
-                        "Login",
-                        style: TextStyle(
-                            fontSize: 24, fontWeight: FontWeight.bold),
-                        textAlign: TextAlign.center,
+          // child: Padding(
+          padding: const EdgeInsets.all(24.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Card(
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      const SizedBox(height: 32),
+                      const Center(
+                        child: Text(
+                          "Login",
+                          style: TextStyle(
+                              fontSize: 24, fontWeight: FontWeight.bold),
+                          textAlign: TextAlign.center,
+                        ),
                       ),
-                    ),
-                    const SizedBox(
-                      height: 24,
-                    ),
-                    const Text(
-                      "Username",
-                      style: TextStyle(fontSize: 16),
-                    ),
-                    TextFormField(
-                      controller: _usernameController,
-                      keyboardType: TextInputType.text,
-                    ),
-                    const SizedBox(height: 24),
-                    const Text(
-                      "Password ",
-                      style: TextStyle(fontSize: 16),
-                    ),
-                    TextFormField(
-                      controller: _passwordController,
-                      keyboardType: TextInputType.text,
-                      obscureText: true,
-                    ),
-                    const SizedBox(height: 40),
-                    GestureDetector(
-                      onTap: () {
-                        if (_usernameController.text == "" ||
-                            _passwordController.text == "") {
-                          _showToastMsg("Harus Di Isi !!!");
+                      const SizedBox(
+                        height: 24,
+                      ),
+                      const Text(
+                        "Username",
+                        style: TextStyle(fontSize: 16),
+                      ),
+                      TextFormField(
+                        controller: _usernameController,
+                        keyboardType: TextInputType.text,
+                      ),
+                      const SizedBox(height: 24),
+                      const Text(
+                        "Password ",
+                        style: TextStyle(fontSize: 16),
+                      ),
+                      TextFormField(
+                        controller: _passwordController,
+                        keyboardType: TextInputType.text,
+                        obscureText: true,
+                      ),
+                      const SizedBox(height: 40),
+                      GestureDetector(
+                        onTap: () {
+                          if (_usernameController.text == "" ||
+                              _passwordController.text == "") {
+                            Fluttertoast.showToast(
+                              msg: "Harap Login !!!",
+                              toastLength: Toast.LENGTH_LONG,
+                              gravity: ToastGravity.TOP,
+                              timeInSecForIosWeb: 2,
+                              backgroundColor: Colors.red,
+                              textColor: Colors.white,
+                              fontSize: 16.0,
+                              // webPosition: center
+                            );
 
-                          return;
-                        }
+                            return;
+                          }
+                          Auth auth = Auth(
+                              username: _usernameController.text,
+                              password: _passwordController.text);
 
-                        if (_usernameController.text != "admin" ||
-                            _passwordController.text != "admin123") {
-                          _showToastMsg("Username atau Password Salah !!!");
+                          if (!auth.checkLogin()) {
+                            Fluttertoast.showToast(
+                                msg: "Username dan Password Salah",
+                                toastLength: Toast.LENGTH_SHORT,
+                                gravity: ToastGravity.CENTER,
+                                timeInSecForIosWeb: 2,
+                                backgroundColor: Colors.white,
+                                textColor: Colors.white,
+                                fontSize: 16);
 
-                          return;
-                        }
+                            return;
+                          }
+                          if (auth.checkLogin()) {
+                            Fluttertoast.showToast(
+                                msg: "Login Berhasil",
+                                toastLength: Toast.LENGTH_SHORT,
+                                gravity: ToastGravity.CENTER,
+                                timeInSecForIosWeb: 2,
+                                backgroundColor: Colors.white,
+                                textColor: Colors.white,
+                                fontSize: 16);
 
-                        Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => MainPage()));
-                      },
-                      child: Container(
-                        width: MediaQuery.of(context).size.width,
-                        height: 40,
-                        decoration: BoxDecoration(
-                            color: Colors.blue,
-                            borderRadius: BorderRadius.circular(10)),
-                        child: const Center(
-                          child: Text(
-                            "Login",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 10,
-                              fontWeight: FontWeight.bold,
+                            Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => MainPage()));
+                          }
+
+                          // Navigator.pushReplacement(
+                          //     context,
+                          //     MaterialPageRoute(
+                          //         builder: (context) => MainPage()));
+                        },
+                        child: Container(
+                          width: MediaQuery.of(context).size.width,
+                          height: 40,
+                          decoration: BoxDecoration(
+                              color: Colors.blue,
+                              borderRadius: BorderRadius.circular(10)),
+                          child: const Center(
+                            child: Text(
+                              "Login",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 15,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
                           ),
                         ),
                       ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(16.0),
-                      child: Center(child: Text("Lupa Password")),
-                    )
-                  ],
+                      Padding(
+                        padding: const EdgeInsets.all(16.0),
+                        child: Center(
+                            child: Text(
+                          "Lupa Password",
+                          style: TextStyle(
+                              color: Colors.blue,
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold),
+                        )),
+                      )
+                    ],
+                  ),
                 ),
               ),
-            ),
+            ],
           ),
+          // ),
         ),
         // Positioned(
         //   bottom: 0,
@@ -136,11 +183,11 @@ class _LoginPageState extends State<LoginPage> {
 
   _showToastMsg(String msg) {
     Fluttertoast.showToast(
-        msg: "Harapa Login !!!",
+        msg: "Harap Login",
         toastLength: Toast.LENGTH_SHORT,
         gravity: ToastGravity.CENTER,
         timeInSecForIosWeb: 3,
-        backgroundColor: Colors.black,
+        backgroundColor: Colors.white,
         textColor: Colors.white,
         fontSize: 16);
   }

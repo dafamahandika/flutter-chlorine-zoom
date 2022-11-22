@@ -20,7 +20,7 @@ class _ProfilePageState extends State<ProfilePage> {
       children: [
         Container(
           width: MediaQuery.of(context).size.width,
-          height: 300,
+          height: 250,
           color: Colors.blue,
         ),
         Positioned(
@@ -41,10 +41,10 @@ class _ProfilePageState extends State<ProfilePage> {
           child: SizedBox(
             width: 100,
             height: 100,
-            // child: Image.asset(
-            //   "assets/image.jpg",
-            //   fit: BoxFit.cover,
-            // ),
+            child: Image.asset(
+              "assets/dafa.jpg",
+              fit: BoxFit.cover,
+            ),
           ),
         )
       ],

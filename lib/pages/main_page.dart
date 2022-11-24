@@ -22,17 +22,17 @@ class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('My App'),
-        actions: [
-          IconButton(
-              onPressed: () {
-                Navigator.pushReplacement(context,
-                    MaterialPageRoute(builder: (context) => LoginPage()));
-              },
-              icon: const Icon(Icons.exit_to_app))
-        ],
-      ),
+      // appBar: AppBar(
+      //   title: Text('My App'),
+      //   actions: [
+      //     IconButton(
+      //         onPressed: () {
+      //           Navigator.pushReplacement(context,
+      //               MaterialPageRoute(builder: (context) => LoginPage()));
+      //         },
+      //         icon: const Icon(Icons.exit_to_app))
+      //   ],
+      // ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedMenu,
         items: const <BottomNavigationBarItem>[

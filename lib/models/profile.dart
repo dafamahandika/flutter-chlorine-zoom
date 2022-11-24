@@ -1,23 +1,25 @@
 class Profile {
   final String username;
-  final String displayname;
-  final String urlpic;
+  final String displayName;
   final String phone;
-  final String adress;
+  final String email;
+  final String country;
 
-  Profile(
-      {required this.username,
-      required this.displayname,
-      required this.urlpic,
-      required this.phone,
-      required this.adress});
-
+  Profile({
+    required this.username,
+    required this.displayName,
+    required this.phone,
+    required this.email,
+    required this.country,
+  });
+  
   factory Profile.fromJson(Map<String, dynamic> json) {
     return Profile(
-        username: json["username"],
-        displayname: json["display_name"],
-        urlpic: json["url_pic"],
-        phone: json["phone"],
-        adress: json["address"]);
+      username: json["username"],
+      displayName: json["display_name"],
+      phone: json["phone"],
+      email: json["email"],
+      country: json["country"],
+    );
   }
 }

@@ -24,29 +24,50 @@ class _ProfilePageState extends State<ProfilePage> {
           color: Colors.blue,
         ),
         Positioned(
-          child: Padding(
-            padding: const EdgeInsets.only(left: 16, top: 48),
-            child: Text(
-              "Profile",
-              style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white),
+          left: 24,
+          bottom: 24,
+          child: Card(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(50),
             ),
-          ),
-        ),
-        Card(
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
-          child: SizedBox(
-            width: 100,
-            height: 100,
-            child: Image.asset(
-              "assets/dafa.jpg",
-              fit: BoxFit.cover,
+            child: SizedBox(
+              width: 100,
+              height: 100,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(50),
+                child: Image.asset(
+                  "assets/dafa.jpg",
+                  fit: BoxFit.cover,
+                ),
+              ),
             ),
           ),
         )
+
+        //   Positioned(
+        //     child: Padding(
+        //       padding: const EdgeInsets.only(left: 16, top: 48),
+        //       child: Text(
+        //         "Profile",
+        //         style: TextStyle(
+        //             fontSize: 18,
+        //             fontWeight: FontWeight.bold,
+        //             color: Colors.white),
+        //       ),
+        //     ),
+        //   ),
+        //   Card(
+        //     shape:
+        //         RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
+        //     child: SizedBox(
+        //       width: 100,
+        //       height: 100,
+        //       child: Image.asset(
+        //         "assets/dafa.jpg",
+        //         fit: BoxFit.cover,
+        //       ),
+        //     ),
+        //   )
       ],
     );
   }

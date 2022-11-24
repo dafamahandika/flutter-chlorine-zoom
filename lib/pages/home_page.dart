@@ -10,8 +10,15 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  late Profile profile;
+  // // late Profile profile;
 
+  // @override
+  // void initState() {
+  //   // profile = Profile.fromJson(jsonProfile);
+  //   super.initState();
+  // }
+
+  late Profile profile;
   @override
   void initState() {
     profile = Profile.fromJson(jsonProfile);
@@ -37,7 +44,7 @@ class _HomePageState extends State<HomePage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.max,
             children: [
-              Text("Hello ${profile.phone}"),
+              Container(child: Text("Hello ${profile.displayName}")),
               const SizedBox(
                 height: 16,
               ),

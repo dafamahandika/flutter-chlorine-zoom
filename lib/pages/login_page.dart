@@ -82,7 +82,7 @@ class _LoginPageState extends State<LoginPage> {
                             Fluttertoast.showToast(
                               msg: "Harap Login !!!",
                               toastLength: Toast.LENGTH_LONG,
-                              gravity: ToastGravity.TOP,
+                              gravity: ToastGravity.BOTTOM,
                               timeInSecForIosWeb: 2,
                               backgroundColor: Colors.red,
                               textColor: Colors.white,
@@ -100,9 +100,9 @@ class _LoginPageState extends State<LoginPage> {
                             Fluttertoast.showToast(
                                 msg: "Username dan Password Salah",
                                 toastLength: Toast.LENGTH_SHORT,
-                                gravity: ToastGravity.CENTER,
+                                gravity: ToastGravity.BOTTOM,
                                 timeInSecForIosWeb: 2,
-                                backgroundColor: Colors.white,
+                                backgroundColor: Colors.red,
                                 textColor: Colors.white,
                                 fontSize: 16);
 
@@ -114,7 +114,7 @@ class _LoginPageState extends State<LoginPage> {
                                 toastLength: Toast.LENGTH_SHORT,
                                 gravity: ToastGravity.CENTER,
                                 timeInSecForIosWeb: 2,
-                                backgroundColor: Colors.white,
+                                backgroundColor: Colors.green,
                                 textColor: Colors.white,
                                 fontSize: 16);
 

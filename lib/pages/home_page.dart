@@ -28,6 +28,17 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text('My App'),
+        // actions: [
+        //   IconButton(
+        //       onPressed: () {
+        //         Navigator.pushReplacement(context,
+        //             MaterialPageRoute(builder: (context) => LoginPage()));
+        //       },
+        //       icon: const Icon(Icons.exit_to_app))
+        // ],
+      ),
       body: _body(context),
     );
   }

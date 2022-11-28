@@ -4,6 +4,7 @@ class Profile {
   final String phone;
   final String email;
   final String country;
+  final String date;
 
   Profile({
     required this.username,
@@ -11,8 +12,9 @@ class Profile {
     required this.phone,
     required this.email,
     required this.country,
+    required this.date,
   });
-  
+
   factory Profile.fromJson(Map<String, dynamic> json) {
     return Profile(
       username: json["username"],
@@ -20,6 +22,7 @@ class Profile {
       phone: json["phone"],
       email: json["email"],
       country: json["country"],
+      date: json["date"],
     );
   }
 }

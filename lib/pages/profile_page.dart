@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:timelines/timelines.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -10,6 +11,23 @@ class ProfilePage extends StatefulWidget {
 class _ProfilePageState extends State<ProfilePage>
     with SingleTickerProviderStateMixin {
   TabController? tabController;
+  List<String> listPortofolio = [
+    "Git",
+    "GitHub",
+    "Bootstrap",
+    "PHP",
+    "Laravel",
+    "Python",
+    "Flutter",
+  ];
+
+  List<String> listEducation = [
+    "POLTEK SSN",
+    "SMK Wikrama Bogor",
+    "SMPN 1 Cisarua",
+    "SDN 1 Cisarua",
+  ];
+
   @override
   void initState() {
     tabController = TabController(length: 3, vsync: this);
@@ -107,31 +125,6 @@ class _ProfilePageState extends State<ProfilePage>
                   ],
                 ),
               )
-
-              //   Positioned(
-              //     child: Padding(
-              //       padding: const EdgeInsets.only(left: 16, top: 48),
-              //       child: Text(
-              //         "Profile",
-              //         style: TextStyle(
-              //             fontSize: 18,
-              //             fontWeight: FontWeight.bold,
-              //             color: Colors.white),
-              //       ),
-              //     ),
-              //   ),
-              //   Card(
-              //     shape:
-              //         RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
-              //     child: SizedBox(
-              //       width: 100,
-              //       height: 100,
-              //       child: Image.asset(
-              //         "assets/dafa.jpg",
-              //         fit: BoxFit.cover,
-              //       ),
-              //     ),
-              //   )
             ],
           ),
         ),
@@ -146,17 +139,35 @@ class _ProfilePageState extends State<ProfilePage>
                       Icons.document_scanner,
                       color: Colors.grey,
                     ),
+                    child: Text(
+                      "Skills",
+                      style: TextStyle(
+                        color: Colors.grey,
+                      ),
+                    ),
                   ),
                   Tab(
                     icon: Icon(
                       Icons.person_rounded,
                       color: Colors.grey,
                     ),
+                    child: Text(
+                      "About Me",
+                      style: TextStyle(
+                        color: Colors.grey,
+                      ),
+                    ),
                   ),
                   Tab(
                     icon: Icon(
                       Icons.cast_for_education,
                       color: Colors.grey,
+                    ),
+                    child: Text(
+                      "Education",
+                      style: TextStyle(
+                        color: Colors.grey,
+                      ),
                     ),
                   ),
                 ],
@@ -165,14 +176,144 @@ class _ProfilePageState extends State<ProfilePage>
                 child: TabBarView(
                   controller: tabController,
                   children: [
-                    Container(
-                      child: Text("Page 1"),
+                    ListView(
+                      shrinkWrap: true,
+                      padding: const EdgeInsets.all(16),
+                      children: [
+                        Timeline.tileBuilder(
+                          shrinkWrap: true,
+                          builder: TimelineTileBuilder.fromStyle(
+                            contentsAlign: ContentsAlign.alternating,
+                            contentsBuilder: (context, index) {
+                              var item = listPortofolio[index];
+                              return Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Text(item));
+                            },
+                            itemCount: listPortofolio.length,
+                          ),
+                        ),
+                      ],
                     ),
-                    Container(
-                      child: Text("Page 2"),
+                    ListView(
+                      padding: const EdgeInsets.all(16.0),
+                      children: [
+                        Text(
+                          "Nama Lengkap",
+                          style: TextStyle(
+                              fontSize: 16.0, fontWeight: FontWeight.bold),
+                        ),
+                        Row(
+                          children: [
+                            Icon(Icons.person),
+                            Text(
+                              "Dafa Mahandika",
+                              style: TextStyle(
+                                fontSize: 16.0,
+                              ),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        Text(
+                          "Alamat",
+                          style: TextStyle(
+                              fontSize: 16.0, fontWeight: FontWeight.bold),
+                        ),
+                        Row(
+                          children: [
+                            Icon(Icons.place),
+                            Text(
+                              "Bogor, Jawa Barat",
+                              style: TextStyle(
+                                fontSize: 16.0,
+                              ),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        Text(
+                          "Tanggal Lahir",
+                          style: TextStyle(
+                              fontSize: 16.0, fontWeight: FontWeight.bold),
+                        ),
+                        Row(
+                          children: [
+                            Icon(Icons.date_range),
+                            Text(
+                              "Bogor, 2 Maret 2006",
+                              style: TextStyle(
+                                fontSize: 16.0,
+                              ),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        Text(
+                          "No. Telp.",
+                          style: TextStyle(
+                              fontSize: 16.0, fontWeight: FontWeight.bold),
+                        ),
+                        Row(
+                          children: [
+                            Icon(Icons.phone),
+                            Text(
+                              "+6285885497322",
+                              style: TextStyle(
+                                fontSize: 16.0,
+                              ),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        Text(
+                          "Email",
+                          style: TextStyle(
+                              fontSize: 16.0, fontWeight: FontWeight.bold),
+                        ),
+                        Row(
+                          children: [
+                            Icon(Icons.email),
+                            Text(
+                              "dafamahandika@gmail.com",
+                              style: TextStyle(
+                                fontSize: 16.0,
+                              ),
+                            ),
+                          ],
+                        ),
+                        // const SizedBox(
+                        //   height: 16,
+                        // ),
+                      ],
                     ),
-                    Container(
-                      child: Text("Page 3"),
+                    ListView(
+                      shrinkWrap: true,
+                      padding: const EdgeInsets.all(16),
+                      children: [
+                        Timeline.tileBuilder(
+                          shrinkWrap: true,
+                          // theme: TimelineThemeData(nodePosition: 0),
+                          builder: TimelineTileBuilder.fromStyle(
+                            contentsAlign: ContentsAlign.alternating,
+                            contentsBuilder: (context, index) {
+                              var item = listEducation[index];
+                              return Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Text(item));
+                            },
+                            itemCount: listEducation.length,
+                          ),
+                        ),
+                      ],
                     ),
                   ],
                 ),

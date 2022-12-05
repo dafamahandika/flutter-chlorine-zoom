@@ -22,7 +22,7 @@ class _ProfilePageState extends State<ProfilePage>
   ];
 
   List<String> listEducation = [
-    "POLTEK SSN",
+    // "POLTEK SSN",
     "SMK Wikrama Bogor",
     "SMPN 1 Cisarua",
     "SDN 1 Cisarua",
